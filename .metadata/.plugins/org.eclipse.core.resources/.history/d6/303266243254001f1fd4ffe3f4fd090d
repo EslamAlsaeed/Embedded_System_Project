@@ -1,0 +1,23 @@
+/*
+ * main.c
+ *
+ *  Created on: Jul 25, 2024
+ *      Author: Eslam
+ */
+#include<avr/delay.h>
+#include"../APP/LED_APP/LED_APP.h"
+
+
+
+void main(void) {
+
+	while (1) {
+
+		//LED_APP_3();
+
+
+}
+}
+
+
+

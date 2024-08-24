@@ -1,0 +1,28 @@
+/*
+ * main.c
+ *
+ *  Created on: Jul 25, 2024
+ *      Author: Eslam
+ */
+#include<avr/delay.h>
+#include"../APP/KEYBAD_APP/KEYBAD_APP.h"
+#include "../APP/7_SEGMENT_APP/7_SEGMENT_APP.h"
+#include "../APP/LED_APP/LED_APP.h"
+
+
+
+void main(void) {
+
+	while (1) {
+
+		//	Button_InitPullup(PORTB, PIN0);
+		//_delay_ms(50);
+//		LED_APP_5();
+		LED_APP_2();
+
+	}
+}
+
+
+
+

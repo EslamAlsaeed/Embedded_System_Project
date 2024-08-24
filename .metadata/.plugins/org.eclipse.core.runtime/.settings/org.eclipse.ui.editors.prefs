@@ -1,0 +1,15 @@
+Accessibility.UseSaturatedColors=true
+additionIndicationInOverviewRuler=true
+changeIndicationInOverviewRuler=true
+coverage_stylePreferences=NONE
+coverage_text=false
+deletionIndicationInOverviewRuler=true
+eclipse.preferences.version=1
+isIndexResultGoToNextNavigationTarget=true
+org.eclipse.cdt.ui.isOccurrenceGoToNextNavigationTarget=true
+org.eclipse.cdt.ui.isOverrideIndicatorGoToNextNavigationTarget=true
+org.eclipse.cdt.ui.overrideIndicator=true
+org.eclipse.cdt.ui.overrideIndicatorInOverviewRuler=true
+org.eclipse.cdt.ui.writeOccurrenceIndicationInVerticalRuler=true
+overviewRuler_migration=migrated_3.1
+quickdiff.characterMode=true

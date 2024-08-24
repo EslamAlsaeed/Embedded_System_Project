@@ -1,0 +1,50 @@
+#include <avr/io.h>
+#include <util/delay.h>
+
+#define LED1_PIN 0 // Replace with the actual pin number for LED1 (e.g., PA0)
+#define LED2_PIN 1 // Replace with the actual pin number for LED2 (e.g., PA1)
+#define LED3_PIN 2 // Replace with the actual pin number for LED3 (e.g., PA2)
+
+#define BUTTON1_PIN 0 // Replace with the actual pin number for Button1 (e.g., PB0)
+#define BUTTON2_PIN 1 // Replace with the actual pin number for Button2 (e.g., PB1)
+#define BUTTON3_PIN 2 // Replace with the actual pin number for Button3 (e.g., PB2)
+
+void init() {
+	// Set LED pins as output
+	DDRA |= (1 << LED1_PIN) | (1 << LED2_PIN) | (1 << LED3_PIN);
+
+	// Set Button pins as input with pull-up resistors
+	DDRB &= ~((1 << BUTTON1_PIN) | (1 << BUTTON2_PIN) | (1 << BUTTON3_PIN));
+	PORTB |= (1 << BUTTON1_PIN) | (1 << BUTTON2_PIN) | (1 << BUTTON3_PIN);
+}
+
+int main() {
+	init();
+
+	while (1) {
+		// Read button states
+		uint8_t button1State = !(PINB & (1 << BUTTON1_PIN));
+		uint8_t button2State = !(PINB & (1 << BUTTON2_PIN));
+		uint8_t button3State = !(PINB & (1 << BUTTON3_PIN));
+
+		// Toggle LED1
+		if (button1State) {
+			PORTA ^= (1 << LED1_PIN);
+			_delay_ms(50); // Debounce delay
+		}
+
+		// Toggle LED2
+		if (button2State) {
+			PORTA ^= (1 << LED2_PIN);
+			_delay_ms(50); // Debounce delay
+		}
+
+		// Toggle LED3
+		if (button3State) {
+			PORTA ^= (1 << LED3_PIN);
+			_delay_ms(50); // Debounce delay
+		}
+	}
+
+	return 0;
+}

@@ -1,0 +1,37 @@
+/*
+ * KEYBAD_APP.c
+ *
+ *  Created on: Aug 6, 2024
+ *      Author: Eslam
+ */
+#include"../../HAL/KeyBad/Keybad_Interface.h"
+#
+/*Function to
+ *
+ */
+void KEYBAD_APP_1(void) {
+
+	while (1) {
+
+	}
+}
+
+/*Function To
+ *
+ */
+void KEYBAD_APP_2(void) {
+
+	while (1) {
+
+	}
+}
+
+/*Function to
+ *
+ */
+void KEYBAD_APP_3(void) {
+
+	while (1) {
+
+	}
+}

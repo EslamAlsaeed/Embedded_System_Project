@@ -1,0 +1,24 @@
+/*
+ * ADC_Programe.c
+ *
+ *  Created on: Aug 5, 2024
+ *      Author: Eslam
+ */
+
+#include <avr/delay.h>
+#include "../../MCAL/DIO/Interface.h"
+#include"ADC_Private.h"
+#include"ADC_Config.h"
+#include "../../Service/STD_LIB.h"
+#include "../../Service/Bit_Math.h"
+
+void ADC_VoatageRef(u8 Mode) {
+
+	switch (Mode) {
+
+	case AREF:
+	Clr_Bit(ADMUX,REFS_1);
+	break;
+
+}
+}

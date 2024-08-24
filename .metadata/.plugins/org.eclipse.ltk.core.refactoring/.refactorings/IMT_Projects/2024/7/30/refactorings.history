@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;IMT_Projects/MCAL/DIO/Programe.c&apos; to &apos;Programe.o&apos;" description="Rename resource &apos;Programe.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="MCAL/DIO/Programe.c" name="Programe.o" stamp="1721993630287" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;IMT_Projects/MCAL/DIO/Programe.o&apos; to &apos;Programe.c&apos;" description="Rename resource &apos;Programe.o&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="MCAL/DIO/Programe.o" name="Programe.c" stamp="1721993649361" updateReferences="true"/>
+</session>

@@ -1,0 +1,9 @@
+13:37:03 **** Incremental Build of configuration Debug for project IMT_Projects ****
+make all 
+Building file: ../HAL/LED/Program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"HAL/LED/Program.d" -MT"HAL/LED/Program.o" -c -o "HAL/LED/Program.o" "../HAL/LED/Program.c"
+make: *** [HAL/LED/Program.o] Error -1073741502
+
+13:37:05 Build Finished (took 2s.553ms)
+

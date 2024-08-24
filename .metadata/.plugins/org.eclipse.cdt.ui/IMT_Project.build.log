@@ -1,0 +1,47 @@
+02:37:21 **** Incremental Build of configuration Debug for project IMT_Project ****
+make all 
+Building file: ../APP/LM35_APP/LM35_APP.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"APP/LM35_APP/LM35_APP.d" -MT"APP/LM35_APP/LM35_APP.o" -c -o "APP/LM35_APP/LM35_APP.o" "../APP/LM35_APP/LM35_APP.c"
+In file included from ../APP/LM35_APP/../../HAL/LM35/LM35_Interface.h:13,
+                 from ../APP/LM35_APP/LM35_APP.c:7:
+e:/embedded system/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/avr/delay.h:36:2: warning: #warning "This file has been moved to <util/delay.h>."
+In file included from e:/embedded system/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/avr/delay.h:37,
+                 from ../APP/LM35_APP/../../HAL/LM35/LM35_Interface.h:13,
+                 from ../APP/LM35_APP/LM35_APP.c:7:
+e:/embedded system/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../APP/LM35_APP/LM35_APP.c: In function 'LM35_APP_1':
+../APP/LM35_APP/LM35_APP.c:16: warning: pointer targets in passing argument 3 of 'LCD_SendString' differ in signedness
+Finished building: ../APP/LM35_APP/LM35_APP.c
+ 
+Building target: IMT_Project.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,IMT_Project.map -mmcu=atmega32 -o "IMT_Project.elf"  ./MCAL/Global_ISR/GIE_ISR_Programe.o  ./MCAL/EXT_ISR/EXT_ISR_Programe.o  ./MCAL/DIO/Program.o  ./MCAL/ADC/ADC_Programe.o  ./HAL/LM35/LM35_Programe.o  ./HAL/LED/LED_Program.o  ./HAL/LCD/LCD_Programe.o  ./HAL/KeyBad/Keybad_Programe.o  ./HAL/Button/Button_Programe.o  ./HAL/7_Segment/7_Segment_Programe.o  ./APP/LM35_APP/LM35_APP.o  ./APP/LED_APP/LED_APP.o  ./APP/LCD_APP/LCD_APP.o  ./APP/KEYBAD_APP/KEYBAD_APP.o  ./APP/EXT_APP/EXT_APP.o  ./APP/ADC_APP/ADC_APP.o  ./APP/7_SEGMENT_APP/7_SEGMENT_APP.o  ./APP/main.o   
+Finished building target: IMT_Project.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S IMT_Project.elf  >"IMT_Project.lss"
+Finished building: IMT_Project.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex IMT_Project.elf  "IMT_Project.hex"
+Finished building: IMT_Project.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 IMT_Project.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   23848 bytes (72.8% Full)
+(.text + .data + .bootloader)
+
+Data:        360 bytes (17.6% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+02:37:24 Build Finished (took 2s.297ms)
+

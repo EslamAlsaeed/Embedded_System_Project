@@ -1,0 +1,40 @@
+/*
+ * LCD_APP.c
+ *
+ *  Created on: Aug 6, 2024
+ *      Author: Eslam
+ */
+#include "../../HAL/LCD/LCD_Interface.h"
+/*
+ *
+ */
+void LCD_APP_1(void) {
+
+	LCD_HWIntial(PORTC, PORTD);
+
+	while (1) {
+
+	}
+}
+
+/*
+ *
+ */
+
+void LCD_APP_2(void) {
+
+	while (1) {
+
+	}
+}
+
+/*
+ *
+ */
+
+void LCD_APP_3(void) {
+
+	while (1) {
+
+	}
+}

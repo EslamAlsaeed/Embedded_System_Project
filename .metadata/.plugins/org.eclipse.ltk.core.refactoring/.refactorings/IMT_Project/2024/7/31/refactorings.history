@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;IMT_Project/HAL/Key_Bad&apos; to &apos;KeyBad&apos;" description="Rename resource &apos;Key_Bad&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="HAL/Key_Bad" name="KeyBad" stamp="1722169687737" updateReferences="true"/>
+</session>

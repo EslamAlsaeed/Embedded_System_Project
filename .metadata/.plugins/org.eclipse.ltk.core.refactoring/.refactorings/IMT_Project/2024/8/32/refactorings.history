@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;IMT_Project/APP/KEYBAD_APP/KEYBAD_APP.H&apos; to &apos;KEYBAD_APP.h&apos;" description="Rename resource &apos;KEYBAD_APP.H&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="APP/KEYBAD_APP/KEYBAD_APP.H" name="KEYBAD_APP.h" stamp="1722902777474" updateReferences="true"/>
+</session>

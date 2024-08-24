@@ -1,0 +1,36 @@
+/*
+ * LM35_APP.c
+ *
+ *  Created on: Aug 24, 2024
+ *      Author: Eslam
+ */
+#include "../../HAL/LM35/LM35_Interface.h"
+#include "../../HAL/LCD/LCD_Interface.h"
+void LM35_APP_1(void) {
+
+	LCD_HWIntial(PORTC, PORTD);
+	u8 channel;
+	channel = channel & 0x07;
+
+	ADMUX = ADMUX & 0xE0;
+	ADMUX = ADMUX | channel;
+	SEt_Bit(ADCSRA, ADSC);
+	while (1) {
+		while (Get_Bit(ADCSRA,ADIF) == 0)
+			;
+		Set_Bit(ADCSRA, ADIF);
+		
+		LCD_SWIntial(PORTC, PORTD);
+		LCD_SendCommand(PORTC, PORTD, ROW_ONE);
+		LCD_SendString(PORTC, PORTD, "  Value ::  ");
+		LCD_SendData(PORTC, PORTD, ADCL);
+		//	_delay_ms(500);
+		LCD_SendCommand(PORTC, PORTD, CLEAR);
+
+
+	}
+
+}
+
+
+

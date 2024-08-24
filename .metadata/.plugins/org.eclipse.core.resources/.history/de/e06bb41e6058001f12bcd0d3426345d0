@@ -1,0 +1,27 @@
+/*
+ * ADC_AVR.c
+ *
+ *  Created on: Aug 12, 2024
+ *      Author: Eslam
+ */
+
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stdio.h>
+#include "lcd.h" // You'll need an LCD library (e.g., LiquidCrystal or custom)
+
+// Function to initialize ADC
+void ADC_Init() {
+	ADMUX = (1 << REFS0); // Set reference voltage to AVcc
+	ADCSRA = (1 << ADEN); // Enable ADC
+}
+
+// Function to read ADC value from a specific channel
+uint16_t ADC_Read(uint8_t channel) {
+	ADMUX = (ADMUX & 0xF8) | (channel & 0x07); // Select ADC channel
+	ADCSRA |= (1 << ADSC); // Start conversion
+	while (ADCSRA & (1 << ADSC))
+		; // Wait for conversion to complete
+	return ADC; // Read converted value
+}

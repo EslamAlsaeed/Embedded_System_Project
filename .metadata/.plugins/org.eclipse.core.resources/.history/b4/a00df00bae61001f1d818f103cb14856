@@ -1,0 +1,30 @@
+/*
+ * LM35_APP.c
+ *
+ *  Created on: Aug 24, 2024
+ *      Author: Eslam
+ */
+#include "../../HAL/LM35/LM35_Interface.h"
+#include "../../HAL/LCD/LCD_Interface.h"
+void LM35_APP_1(void) {
+
+	LCD_HWIntial(PORTC, PORTD);
+	ADC_Control(ENABLE);
+	ADC_VoltageRef(AREF);
+	ADC_DivisionFactor(FACTOR_128);
+	ADC_SinglePinInput(ADC0);
+	while (1) {
+		LCD_SWIntial(PORTC, PORTD);
+		LCD_SendCommand(PORTC, PORTD, ROW_ONE);
+		LCD_SendString(PORTC, PORTD, "  Value ::  ");
+		LCD_SendData(PORTC, PORTD, ADC_AdjustResult(RIGHT));
+		//	_delay_ms(500);
+		LCD_SendCommand(PORTC, PORTD, CLEAR);
+
+
+	}
+
+}
+
+
+

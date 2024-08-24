@@ -1,0 +1,39 @@
+/*
+ * main.c
+ *
+ *  Created on: Jul 25, 2024
+ *      Author: Eslam
+ */
+//#include<avr/io.h>
+#include<avr/delay.h>
+
+#include "../HAL/LED/LED_Interface.h"
+#include "../HAL/LCD/LCD_Interface.h"
+#include "../HAL/7_Segment/7_Segment_Interface.h"
+#include "../HAL/Button/Button_Interface.h"
+
+
+
+void main(){
+
+
+	Button_Init(PORTD, PIN0);
+
+while(1)
+{
+
+		if (Button_VoidPullUp(PORTD, PIN0) == HIGH) {
+
+			LED_ON(PORTC, PIN7);
+		}
+		if (Button_VoidPullUp(PORTD, PIN0) == LOW) {
+
+			LED_OFF(PORTC, PIN7);
+		}
+
+
+
+
+}
+}
+

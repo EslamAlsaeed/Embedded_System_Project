@@ -1,0 +1,100 @@
+/*
+ * LED_APP.c
+ *
+ *  Created on: Aug 6, 2024
+ *      Author: Eslam
+ */
+
+#include "../../HAL/LED/LED_Interface.h"
+#include"../../HAL/Button/Button_Interface.h"
+#include <avr/delay.h>
+
+/*Function to Set Pin HIGH and LOW with Delay 1 second
+ */
+void LED_APP_1(void) {
+
+	while (1) {
+		LED_Delay(PORTB, PIN0, 1000);
+
+
+	}
+
+}
+/*Function to Set FULL PORT HIGH and LOW with Delay 1.5 second
+ */
+void LED_APP_2(void) {
+
+	while (1) {
+		LED_Port(PORTA, HIGH);
+		_delay_ms(1500);
+		LED_Port(PORTA, LOW);
+		_delay_ms(1500);
+
+	}
+
+}
+/*Function to Set Pin HIGH when pushbutton press
+ * and LOW when pushbutton not press
+ */
+void LED_APP_3(void) {
+	Button_InitPullup(PORTB, PIN7);
+	while (1) {
+		u8 Value = Button_GetValue(PORTB, PIN0);
+		if (Value == LOW) {
+
+			LED_ON(PORTA, PIN0);
+
+		}
+		if (Value == HIGH) {
+			LED_OFF(PORTA, PIN0);
+
+		}
+
+
+	}
+
+}
+/*Function to Set Pins for Full Port  HIGH and LOW
+ */
+void LED_APP_4(void) {
+
+	while (1) {
+		LED_Switch(PORTA, 1000);
+
+	}
+
+}
+/*
+ * 
+ */
+void LED_APP_5(void) {
+
+	Button_InitPullup(PORTB, PIN0);
+	Button_InitPullup(PORTB, PIN1);
+	Button_InitPullup(PORTB, PIN2);
+	while (1) {
+		u8 Value_1 = Button_GetValue(PORTB, PIN0);
+		u8 Value_2 = Button_GetValue(PORTB, PIN1);
+		u8 Value_3 = Button_GetValue(PORTB, PIN2);
+		if (Value_1 == HIGH) {
+
+			LED_ON(PORTA, PIN0);
+		} else if (Value_1 == LOW) {
+			LED_OFF(PORTA, PIN0);
+		}
+
+		if (Value_2 == HIGH) {
+
+			LED_ON(PORTA, PIN1);
+		} else if (Value_2 == LOW) {
+			LED_OFF(PORTA, PIN1);
+		}
+		if (Value_3 == HIGH) {
+
+			LED_ON(PORTA, PIN2);
+		} else if (Value_3 == LOW) {
+			LED_OFF(PORTA, PIN2);
+		}
+
+	}
+}

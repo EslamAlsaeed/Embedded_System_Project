@@ -1,0 +1,90 @@
+#define F_CPU 8000000UL
+#include <avr/io.h>
+#include <util/delay.h>
+#include <string.h>
+#include <stdio.h>
+#include "LCD_16x2_H_file.h"
+
+#define degree_symbol 0xDF
+
+void ADC_Init() {
+	DDRA = 0x00;            // Make ADC port as input
+	ADCSRA = 0x87;          // Enable ADC, with freq/128
+	ADMUX = 0x40;           // Vref: Avcc, ADC channel: 0
+}
+
+int ADC_Read(char channel) {
+	ADMUX = 0x40 | (channel & 0x07);    // Set input channel to read
+	ADCSRA |= (1 << ADSC);              // Start ADC conversion
+	while (!(ADCSRA & (1 << ADIF)))
+		;    // Wait until end of conversion
+	ADCSRA |= (1 << ADIF);              // Clear interrupt flag
+	_delay_ms(1);                       // Wait a little bit
+	return ADCW;                        // Return ADC value
+}
+
+void LCD_Init() {
+	LCD_Command(0x02);                  // Initialize LCD in 4-bit mode
+	LCD_Command(0x28);                  // 2 lines, 5x7 matrix
+	LCD_Command(0x0C);                  // Display on, cursor off
+	LCD_Command(0x06);               // Increment cursor (shift cursor to right)
+	LCD_Command(0x01);                  // Clear display
+}
+
+void LCD_Command(char cmd) {
+	PORTD = (PORTD & 0x0F) | (cmd & 0xF0);   // Send higher nibble
+	PORTC &= ~(1 << RS);                    // RS = 0 for command
+	PORTC |= (1 << EN);                     // Enable pulse
+	_delay_us(1);
+	PORTC &= ~(1 << EN);
+
+	PORTD = (PORTD & 0x0F) | (cmd << 4);    // Send lower nibble
+	PORTC |= (1 << EN);
+	_delay_us(1);
+	PORTC &= ~(1 << EN);
+	_delay_us(100);
+}
+
+void LCD_Char(char data) {
+	PORTD = (PORTD & 0x0F) | (data & 0xF0);  // Send higher nibble
+	PORTC |= (1 << RS);                      // RS = 1 for data
+	PORTC |= (1 << EN);
+	_delay_us(1);
+	PORTC &= ~(1 << EN);
+
+	PORTD = (PORTD & 0x0F) | (data << 4);    // Send lower nibble
+	PORTC |= (1 << EN);
+	_delay_us(1);
+	PORTC &= ~(1 << EN);
+	_delay_us(100);
+}
+
+void LCD_String(char* str) {
+	for (int i = 0; str[i] != '\0'; i++) {
+		LCD_Char(str[i]);
+	}
+}
+
+void LCD_String_xy(char row, char col, char* str) {
+	char position[] = { 0x80, 0xC0, 0x94, 0xD4 };
+	LCD_Command(position[row - 1] + col);
+	LCD_String(str);
+}
+
+int main() {
+	char Temperature[10];
+	float celsius;
+
+	LCD_Init();             // Initialize 16x2 LCD
+	ADC_Init();             // Initialize ADC
+
+	while (1) {
+		LCD_String_xy(1, 0, "Temperature");
+		celsius = (ADC_Read(0) * 4.88);
+		celsius = (celsius / 10.00);
+		sprintf(Temperature, "%d%cC  ", (int) celsius, degree_symbol);
+		LCD_String_xy(2, 0, Temperature);
+		_delay_ms(1000);
+		memset(Temperature, 0, 10);
+	}
+}

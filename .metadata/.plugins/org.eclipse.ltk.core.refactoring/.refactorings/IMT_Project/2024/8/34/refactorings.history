@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;IMT_Project/HAL/LM35/LM35_Config.c&apos; to &apos;LM35_Config.h&apos;" description="Rename resource &apos;LM35_Config.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="HAL/LM35/LM35_Config.c" name="LM35_Config.h" stamp="1724350872002" updateReferences="true"/>
+</session>

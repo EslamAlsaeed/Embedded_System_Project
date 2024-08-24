@@ -1,0 +1,18 @@
+/*
+ * ADC_APP.c
+ *
+ *  Created on: Aug 12, 2024
+ *      Author: Eslam
+ */
+#include "../../MCAL/ADC/ADC_Interface.h"
+
+void ADC_APP_1(void) {
+
+}
+
+void ADC_APP_2(void) {
+
+}
+
+void ADC_APP_3(void)
+

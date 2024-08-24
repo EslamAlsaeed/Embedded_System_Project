@@ -1,0 +1,43 @@
+/*
+ * ADC_APP.c
+ *
+ *  Created on: Aug 12, 2024
+ *      Author: Eslam
+ */
+#include "../../MCAL/ADC/ADC_Interface.h"
+/*Function To
+ *
+ */
+void ADC_APP_1(void) {
+	LCD_HWIntial(PORTC, PORTD);
+	while (1) {
+		ADC_Control(ENABLE); //Enable ADC
+		ADC_DivisionFactor(FACTOR_2); //Divion factor
+		ADC_SinglePinInput(ADC0); //ADC0 Select
+		u8 data = ADC_AdjustResult(RIGHT);
+		Right Adjustment
+		//lcd
+	
+	}
+}
+
+/*Function To
+ *
+ */
+void ADC_APP_2(void) {
+
+	while (1) {
+
+	}
+}
+
+/*Function To
+ *
+ */
+void ADC_APP_3(void) {
+
+	while (1) {
+
+	}
+}
+

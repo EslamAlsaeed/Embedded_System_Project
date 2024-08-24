@@ -1,0 +1,48 @@
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stdio.h>
+#include "../../HAL/LCD/LCD_Interface.h" // You'll need an LCD library (e.g., LiquidCrystal or custom)
+void app(void);
+// Function to initialize ADC
+void ADC_Init() {
+	ADMUX = (1 << REFS0); // Set reference voltage to AVcc
+	ADCSRA = (1 << ADEN); // Enable ADC
+}
+
+// Function to read ADC value from a specific channel
+uint16_t ADC_Read(uint8_t channel) {
+	ADMUX = (ADMUX & 0xF8) | (channel & 0x07); // Select ADC channel
+	ADCSRA |= (1 << ADSC); // Start conversion
+	while (ADCSRA & (1 << ADSC))
+		; // Wait for conversion to complete
+	return ADC; // Read converted value
+}
+
+int app(void) {
+	// Initialize ADC
+	ADC_Init();
+	// Initialize LCD (you'll need to implement this part)
+	LCD_HWIntial(PORTC, PORTD);
+
+
+	while (1) {
+		LCD_SWIntial(PORTC, PORTD);
+		// Read temperature from LM35 (connected to ADC0)
+		uint16_t adc_value = ADC_Read(0);
+		float temperature = (adc_value * 5.0) / 1024.0; // Convert to voltage
+		temperature = (temperature - 0.5) * 100.0; // Convert to Celsius
+
+		// Display temperature on LCD
+		char temp_str[10];
+		snprintf(temp_str, sizeof(temp_str), "%.1f C", temperature);
+		LCD_SendCommand(PORTC, PORTD, ROW_ONE);
+		LCD_SendData(PORTC, PORTD, temp_str[10]);
+		LCD_SendCommand(PORTC, PORTD, CLEAR);
+
+		// Add any other functionality you need (e.g., control outputs, user input, etc.)
+
+		_delay_ms(1000); // Delay before reading new value
+	}
+
+	return 0;
+}

@@ -1,0 +1,16 @@
+/*
+ * ADC_Private.h
+ *
+ *  Created on: Aug 5, 2024
+ *      Author: Eslam
+ */
+#include "../../Service/STD_LIB.h"
+#ifndef MCAL_ADC_ADC_PRIVATE_H_
+#define MCAL_ADC_ADC_PRIVATE_H_
+
+#define  ADMUX   *((volatile u8*)0x27)
+// Pins to control  the voltage reference for the ADC
+#define  REFS_1  7
+#define  REFS_2 6
+
+#endif /* MCAL_ADC_ADC_PRIVATE_H_ */

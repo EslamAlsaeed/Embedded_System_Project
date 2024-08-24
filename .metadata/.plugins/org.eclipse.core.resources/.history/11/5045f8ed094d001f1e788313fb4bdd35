@@ -1,0 +1,109 @@
+/*
+ * Keybad_Programe.c
+ *
+ *  Created on: Jul 28, 2024
+ *      Author: Eslam
+ */
+#include <avr/delay.h>
+#include "../../MCAL/DIO/Interface.h"
+#include "../../Service/STD_LIB.h"
+#include "../../Service/Bit_Math.h"
+#include"Keybad_Interface.h"
+#include"../Button/Button_Interface.h"
+
+/*Function to Set Intialization for PORt Whcich will used with Keybad
+ * Make First Four Pins as OUTPUT to Columes
+ * And Make Last Four Pins As INPUT to Rows
+ *Receive Name of PORT only like  (PORTA)
+ */
+void Keybad_HWIntial(u8 PORT) {
+	Set_PortDirection(PORT, 0b00001111);
+	Set_PortValue(PORT, 0b11110000); //Input PUll up
+
+}
+
+/*Function to Set Intialization for PORt Which will used with Keybad
+ *Set Part Which Make Keybad Work and Return Values Which Wanted
+ *Receive Name of PORT only like  (PORTA)
+ */
+u8 Keybad_SWIntial(u8 PORT) {
+	u8 columes[] = { PIN0, PIN1, PIN2, PIN3 };
+	u8 Rows[] = { PIN4, PIN5, PIN6, PIN7 };
+	for (u8 colume = 0; colume < 4; colume++) {
+		Set_PinValue(PORT, columes[colume], HIGH);
+		for (u8 Row = 0; Row < 4; Row++) {
+			if (Get_PinValue(PORT, Rows[Row]) == 1) {
+				Set_PinValue(PORTB, PIN0, HIGH);
+				_delay_ms(30);
+				return Keybad_Value((Row * 4) + colume + 1);
+		}
+			else {
+				Set_PinValue(PORTB, PIN0, LOW);
+			}
+			
+		}
+	}
+
+
+}
+
+/*Special Function to Set Values Which Keybad Will Returned it
+ * Made Every Value Bulid it place in keybad
+ *Receive value from function of Keybad_SWIntial()
+ */
+static u8 Keybad_Value(u8 Number) {
+
+	switch (Number) {
+	case 1:
+		return '1';
+		break;
+	case 2:
+		return '2';
+		break;
+	case 3:
+		return '3';
+		break;
+	case 4:
+		return 'A';
+		break;
+	case 5:
+		return '4';
+		break;
+	case 6:
+		return '5';
+		break;
+	case 7:
+		return '6';
+		break;
+	case 8:
+		return 'B';
+		break;
+	case 9:
+		return '7';
+		break;
+	case 10:
+		return '8';
+		break;
+	case 11:
+		return '9';
+		break;
+	case 12:
+		return 'C';
+		break;
+	case 13:
+		return '*';
+		break;
+	case 14:
+		return '0';
+		break;
+	case 15:
+		return '#';
+		break;
+	case 16:
+		return 'D';
+		break;
+		/*default:
+		return '%';
+		 break;*/
+	}
+}

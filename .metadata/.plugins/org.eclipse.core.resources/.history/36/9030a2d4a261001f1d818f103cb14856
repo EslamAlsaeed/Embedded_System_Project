@@ -1,0 +1,30 @@
+/*
+ * main.c
+ *
+ *  Created on: Jul 25, 2024
+ *      Author: Eslam
+ */
+#include<avr/delay.h>
+#include"../APP/KEYBAD_APP/KEYBAD_APP.h"
+#include "../APP/7_SEGMENT_APP/7_SEGMENT_APP.h"
+#include "../APP/LED_APP/LED_APP.h"
+#include"../APP/LCD_APP/LCD_APP.h"
+#include "../APP/EXT_APP/EXT_APP.h"
+#include "../APP/ADC_APP/ADC_APP.h"
+#include "../APP/LM35_APP/LM35_APP.h"
+
+void main(void) {
+
+	while (1) {
+
+
+		LM35_APP_1();
+
+
+
+	}
+}
+
+
+
+

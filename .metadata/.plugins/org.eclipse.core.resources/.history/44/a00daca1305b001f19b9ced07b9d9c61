@@ -1,0 +1,27 @@
+/*
+ * main.c
+ *
+ *  Created on: Jul 25, 2024
+ *      Author: Eslam
+ */
+#include<avr/delay.h>
+#include"../APP/KEYBAD_APP/KEYBAD_APP.h"
+#include "../APP/7_SEGMENT_APP/7_SEGMENT_APP.h"
+#include "../APP/LED_APP/LED_APP.h"
+#include"../APP/LCD_APP/LCD_APP.h"
+
+
+
+void main(void) {
+
+	while (1) {
+
+
+		LCD_APP_2("ESlam Alsaeed");
+
+	}
+}
+
+
+
+

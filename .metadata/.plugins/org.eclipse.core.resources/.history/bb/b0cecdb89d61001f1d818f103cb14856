@@ -1,0 +1,20 @@
+/*
+ * LM35_APP.c
+ *
+ *  Created on: Aug 24, 2024
+ *      Author: Eslam
+ */
+#include "../../HAL/LM35/LM35_Interface.h"
+#include "../../HAL/LCD/LCD_Interface.h"
+void LM35_APP_1(void) {
+
+	while (1) {
+
+		SensorLM35(ADC0);
+
+	}
+
+}
+
+
+

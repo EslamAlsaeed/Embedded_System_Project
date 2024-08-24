@@ -1,0 +1,41 @@
+/*
+ * main.c
+ *
+ *  Created on: Jul 25, 2024
+ *      Author: Eslam
+ */
+//#include<avr/io.h>
+#include<avr/delay.h>
+
+#include "../HAL/LED/LED_Interface.h"
+#include "../HAL/LCD/LCD_Interface.h"
+#include "../HAL/7_Segment/7_Segment_Interface.h"
+#include "../HAL/Button/Button_Interface.h"
+#include"../HAL/KeyBad/Keybad_Interface.h"
+
+
+void main() {
+
+	Keybad_HWIntial(PORTA);
+	LCD_HWIntial(PORTC, PORTD);
+
+	while (1) {
+
+		u8 Value = Keybad_SWIntial();
+		LCD_SWIntial(PORTC, PORTD);
+		//LCD_4BitInit();
+		LCD_SendCommand(PORTC, PORTD, ROW_ONE);
+		LCD_SendString(PORTC, PORTD, "  Eslam Alsaeed ");
+		LCD_SendCommand(PORTC, PORTD, ROW_TOW);
+		LCD_SendString(PORTC, PORTD, " Value :: ");
+		LCD_SendData(PORTC, PORTD, Value);
+		//LCD_SendString(PORTC, PORTD, "    Eslam ");
+		LCD_SendCommand(PORTC, PORTD, CLEAR);
+
+
+
+
+
+}
+}
+
